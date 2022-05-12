@@ -5,7 +5,9 @@ from typing import Set
 from os import listdir
 from os.path import isfile, join
 
-PATH = './data'
+from utils import get_sla_right
+
+PATH = '././data'
 
 
 def get_time_series_variables_from(data: pd.DataFrame,
@@ -173,9 +175,9 @@ def complete_hour_range_in_frame(data: pd.DataFrame,
     df = get_aggregated_daily_frame_for(day=day, data=data)
 
     if 'month' in df.index.names:
-        df_hours = set(df.loc[day, :, df.index[0][-1]].index)
+        df_hours = set(df.loc[day, :, df.index[0][-1]].index.get_level_values(1))
     else:
-        df_hours = set(df.loc[day, :].index)
+        df_hours = set(df.loc[day, :].index.get_level_values(0))
 
     dy_hours = set(range(24))
     missing_hours = dy_hours.difference(df_hours)
@@ -262,6 +264,7 @@ def get_yearly_frame() -> pd.DataFrame:
         year = aux['year'][0]
         aux = complete_days_range_in_frame(data=aux)
         aux = get_day_hour_aggregation_variables_from(data=aux, month=True)
+        aux = get_sla_right(aux)
         aux = get_complete_day_hour_aggregation_variables_from(data=aux, year=year)
 
         df = pd.concat([df, aux.reset_index()])
