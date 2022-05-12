@@ -5,7 +5,7 @@ from typing import Set
 from os import listdir
 from os.path import isfile, join
 
-PATH = '/project/data'
+PATH = './data'
 
 
 def get_time_series_variables_from(data: pd.DataFrame,

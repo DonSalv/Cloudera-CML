@@ -1,17 +1,19 @@
-# Clodera_CML
-A lightgbm example of using Cloudera Machine Learning 
+# Cloudera - CML
 
-This is an example of a Machine Learning useage in the cloud using Cloudera Machine Learning
+This repository has the Machine Learning Module of the Call Center project. It uses a Time Series approach to forecast the call volume and the hourly rates of incoming calls in a call center.
 
-Requirements
+The data corresponds to call logs in the call center for callings received during one year in 2019. The reported time frame of calls is daily within minutes of precision
 
-The pandas library is necesary. Install it with
+This repository is ready to clone in CML to explore the Machine Learning useage in the cloud using Cloudera Machine Learning
 
-`pip install pandas`
-
-The darts library is necesary. Install it with
+Requirements: The major requirement for the project is darts library. This library can be installed with 
 
 `pip install u8darts`
+
+or 
+
+`conda install -c conda-forge u8darts`
+
 
 The ipywidgets is necesary. Install it with
 
